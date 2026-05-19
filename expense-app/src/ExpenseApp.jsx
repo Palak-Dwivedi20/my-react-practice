@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { v4 as uuidv4} from "uuid";
 import ExpenseForm from "./ExpenseFrom";
 import ExpenseList from "./ExpenseList";
+import  "./ExpenseApp.css";
 
 export default function ExpenseApp() {
     let [expenses, setExpenses] = useState(() => {
@@ -70,7 +71,7 @@ export default function ExpenseApp() {
     let total = expenses.reduce((acc, exp) => acc + exp.amount , 0);
 
     return (
-        <div>
+        <div className="expense-container">
             <h1>Expense App</h1>
 
             <ExpenseForm 
@@ -88,7 +89,7 @@ export default function ExpenseApp() {
             deleteExpense={deleteExpense}
             />
 
-           {expenses.length > 0 && <p>Total Amount: {total}</p> }
+           {expenses.length > 0 && <p className="total-text">Total Amount: ₹{total}</p> }
         </div>
-    )
+    );
 }
