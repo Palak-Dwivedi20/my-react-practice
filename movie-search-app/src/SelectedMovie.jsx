@@ -1,43 +1,39 @@
 export default function SelectedMovie({
-    selectedMovie
+selectedMovie
 }) {
 
-    return (
+return (
 
-        <>
-            {selectedMovie && (
+    <>
+        {selectedMovie && (
 
-                <div className="selected-movie">
+            <div className="selected-movie">
 
-                    <h2>Selected Movie</h2>
+                <h2>{selectedMovie.name}</h2>
 
-                    <p>Name: {selectedMovie.name}</p>
+                <p>Type: {selectedMovie.type}</p>
 
-                    <p>Type: {selectedMovie.type}</p>
+                <p>Language: {selectedMovie.language}</p>
 
-                    <p>Language: {selectedMovie.language}</p>
+                <img
+                    src={
+                        selectedMovie.image?.medium ||
+                        "https://dummyimage.com/100x150/cccccc/000000&text=No+Image"
+                    }
+                    alt={selectedMovie.name}
+                />
 
-                    <img
-                        src={
-                            selectedMovie.image?.medium ||
-                            "https://dummyimage.com/100x150/cccccc/000000&text=No+Image"
-                        }
+                <p
+                    dangerouslySetInnerHTML={{
+                        __html:
+                        selectedMovie.summary ||
+                        "No summary available"
+                    }}
+                ></p>
 
-                        alt={selectedMovie.name}
+            </div>
+        )}
+    </>
+);
 
-                        width="200px"
-                    />
-
-                    <p
-                        dangerouslySetInnerHTML={{
-                            __html:
-                            selectedMovie.summary ||
-                            "No summary available"
-                        }}
-                    ></p>
-
-                </div>
-            )}
-        </>
-    );
 }
