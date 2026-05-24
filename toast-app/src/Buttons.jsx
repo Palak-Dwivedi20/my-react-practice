@@ -1,17 +1,28 @@
-export default function Buttons({ handleClick }) {
+export default function Buttons({showToast}) {
     return (
-        <div>
-            <button onClick={() => handleClick("Saved Successfully!", "success")}>
-                Show Data
-            </button> 
+        <div className="btn-container">
 
-            <button onClick={() => handleClick("Something went wrong!", "error")}>
-                Error
-            </button>
+        <button onClick={() => {
+            showToast("Login Successfull", "success")
+        }}>
+        Success Toast
+        </button>
 
-            <button onClick={() => handleClick("Warning message!", "warning")}>
-                Show Warning
-            </button>
+        <button onClick={() => {
+            showToast("Something went worng", "error")
+        }}>
+        Error Toast
+        </button>
+
+        <button onClick={() => {
+            showToast("Invalid input", "warning")
+        }}
+        >Warning Toast</button>
+
+        <button onClick={() => {
+            showToast("New message recevied", "info")
+        }}>Info toast</button>
+
         </div>
     );
 }

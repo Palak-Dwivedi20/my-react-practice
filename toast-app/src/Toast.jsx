@@ -1,55 +1,53 @@
 import { useState } from "react";
-import Message from "./Message";
+
+import "./Toast.css"
+import ToastContainer from "./ToastContainer";
 import Buttons from "./Buttons";
-import "./toast.css";
 
 export default function Toast() {
+    let [toast, setToast] = useState([]);
 
-  const [toasts, setToasts] = useState([]);
+    let showToast = (message, type) => {
+        let notification = {
+            id: Date.now(),
+            message,
+            type
+        }
 
-  const removeToast = (id) => {
-    setToasts((prev) => prev.filter((toast) => toast.id !== id));
-  };
+        setToast((prev) => {
+            return [...prev, notification];
+        });
 
-  const handleClick = (msg, toastType) => {
+        setTimeout(() => {
+            setToast((prev) => {
+                return prev.filter((t) => {
+                    return t.id !== notification.id
+                })
+            })
+        }, 3000);
 
-    const id = Date.now();
+    }
 
-    const timer = setTimeout(() => {
-      removeToast(id);
-    }, 3000);
+    let removeButtonToast = (id) => {
+        setToast((prev) => {
+            return prev.filter((t) => {
+                return t.id !== id
+            })
+        })
+    }
 
-    const newToast = {
-      id,
-      message: msg,
-      type: toastType,
-      timer
-    };
+    return (
+        <div>
+            <h1>Toast App</h1>
 
-    setToasts((prev) => [...prev, newToast]);
-  };
+            <ToastContainer 
+            toast={toast}
+            removeButtonToast={removeButtonToast}
+            />
 
-  return (
-    <div className="page">
-
-      <h1>Toast Notification</h1>
-
-      <Buttons handleClick={handleClick} />
-
-      <div className="toast-container">
-
-        {toasts.map((toast) => (
-          <Message
-            key={toast.id}
-            message={toast.message}
-            type={toast.type}
-            timer={toast.timer}
-            closeToast={() => removeToast(toast.id)}
-          />
-        ))}
-
-      </div>
-
-    </div>
-  );
+            <Buttons 
+            showToast={showToast}
+            />
+        </div>
+    )
 }
