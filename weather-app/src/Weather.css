@@ -1,0 +1,24 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: sans-serif;
+    background-color: #111827;
+    color: white;
+}
+
+.weather-container {
+    width: 90%;
+    max-width: 500px;
+    margin: 50px auto;
+    text-align: center;
+}
+
+.weather-container h1 {
+    margin-bottom: 20px;
+    font-size: 40px;
+    color: #facc15;
+}

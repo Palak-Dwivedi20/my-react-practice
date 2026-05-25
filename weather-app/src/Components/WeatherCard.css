@@ -1,0 +1,21 @@
+.weather-card {
+    width: 350px;
+    margin: 30px auto;
+    background: #1f2937;
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    text-align: center;
+}
+
+.weather-card h2 {
+    font-size: 32px;
+    margin-bottom: 15px;
+    color: #facc15;
+}
+
+.weather-card p {
+    font-size: 20px;
+    margin: 12px 0;
+    color: #e5e7eb;
+}
