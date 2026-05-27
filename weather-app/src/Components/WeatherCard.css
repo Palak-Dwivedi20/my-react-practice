@@ -2,20 +2,54 @@
     width: 350px;
     margin: 30px auto;
     background: #1f2937;
-    padding: 25px;
+    padding: 30px;
     border-radius: 20px;
     box-shadow: 0 4px 20px rgba(0,0,0,0.3);
     text-align: center;
+
 }
 
-.weather-card h2 {
-    font-size: 32px;
+
+.weather-icon {
+    font-size: 70px;
     margin-bottom: 15px;
     color: #facc15;
 }
 
+
+.weather-card h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+    color: #facc15;
+}
+
 .weather-card p {
-    font-size: 20px;
     margin: 12px 0;
+    font-size: 20px;
     color: #e5e7eb;
+
+}
+
+.sunny {
+    background: linear-gradient(
+        135deg,
+        #f59e0b,
+        #facc15
+    );
+}
+
+.cloudy {
+    background: linear-gradient(
+        135deg,
+        #6b7280,
+        #9ca3af
+    );
+}
+
+.rainy {
+    background: linear-gradient(
+        135deg,
+        #2563eb,
+        #60a5fa
+    );
 }
