@@ -1,0 +1,118 @@
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    padding: 16px;
+    margin: 0 auto;
+    transition: transform 0.3s ease,
+            box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 18px rgba(0,0,0,0.2);
+}
+
+.card-image img {
+    width: 100%;
+    border-radius: 8px;
+    height: 280px;
+    object-fit: cover;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.info h2 {
+    margin-top: 15px;
+    color:  #222;
+    font-size: 22px;
+    line-height: 1.5;
+}
+
+.info p {
+    text-align: left;
+    color: #555;
+    line-height: 1.6;
+    margin-top: 8px;
+    font-size: 14px;
+}
+
+
+.info .price {
+    color: #0f766e;;
+    font-size: 24px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.stars {
+    display: flex;
+    gap: 5px;
+    color:  #facc15;
+    margin-bottom: 10px;
+    width: 100%;
+    font-size: 18px;
+}
+
+
+.qty {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+
+.qty button {
+    border: none;
+    padding: 6px 12px;
+    background-color: #555;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.qty button:hover {
+    background-color: #333;
+}
+
+.qty span {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.add-to-cart {
+    width: 100%;
+}
+
+.add-to-cart button {
+    border: none;
+    width: 100%;
+    padding: 12px;
+    background-color: #111;
+    color: white;
+    border-radius: 6px;
+    transition:  transform 0.3s ease,
+            background-color 0.3s ease;;
+}
+
+.add-to-cart button:hover {
+    background-color: #222;
+    transform: scale(1.02);
+}
+
+
