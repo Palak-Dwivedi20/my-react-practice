@@ -2,7 +2,7 @@ import { FaStar } from "react-icons/fa";
 
 import "./ProductCard.css";
 
-export default function ProductCard({image, title, description, price, qty, increaseQty, decreaseQty}) {
+export default function ProductCard({image, title, description, price, addToCart}) {
     return (
          <div className="card">
 
@@ -24,15 +24,8 @@ export default function ProductCard({image, title, description, price, qty, incr
                       <FaStar />
                 </div>
 
-                <div className="qty">
-                    <button onClick={decreaseQty}>-</button>
-                    <span>{qty}</span>
-
-                    <button onClick={increaseQty}>+</button>
-                </div>
-
                 <div className="add-to-cart">
-                    <button>Add to Cart</button>
+                    <button onClick={addToCart}>Add to Cart</button>
                 </div>
                 </div>
     );

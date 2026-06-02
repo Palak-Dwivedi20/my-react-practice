@@ -1,71 +1,97 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
-
-import leatherImg from "../assets/leather-bag.jpg"
-import topImg from "../assets/top.jpg"
-import denimImg from "../assets/denim.jpg";
 
 import "./ShoppingCard.css";
 import ProductCard from "./ProductCard";
+import SearchBar from "./SearchBar";
+import CategorySelect from "./CategorySelect";
 
 
 export default function ShoppingCard() {
 
-    let products = [
-    {
-        id: 1,
-        title: "Classic Leather Bag",
-        description: "Stylish and durable leather bag perfect for everyday use.",
-        price: 120,
-        image: leatherImg
-    },
 
-    {
-        id: 2,
-        title: "Casual White Top",
-        description: "Comfortable and stylish white top for casual wear.",
-        price: 90,
-        image: topImg
-    },
+let [products, setProducts] = useState([]);
+let [loading, setLoading] = useState(false);
+let [error, setError] = useState("");
+let [searchItem, setSearchItem] = useState("");
+let [category, setCategory] = useState("all");
+let [cartItems, setCartItems] = useState([]);
 
-    {
-        id: 3,
-        title: "Denim Jeans",
-        description: "Stylish high-waist denim jeans designed for casual outings.",
-        price: 150,
-        image: denimImg
+async function getProducts() {
+    try {
+        setLoading(true);
+        setError("");
+        let res = await axios.get("https://fakestoreapi.com/products");
+        console.log(res.data)
+        setProducts(res.data);
+    } catch (err) {
+        setError("Something Went wrong"); 
+        console.log(err);
+    } finally {
+        setLoading(false);
     }
-];
+}
 
-let[qty, setQty] = useState(1);
+useEffect(() => {
+    getProducts();
+}, []);
 
-    let increaseQty = () => {
-        setQty((prev) => prev + 1);
+
+    if(loading) {
+        return <p>Loading...</p>
+    }  
+
+    if(error) {
+        return <p>{error}</p>
     }
 
-    let decreaseQty = () => {
-        if(qty > 1) {
-            setQty((prev) => prev - 1);
+    let searchItems = products.filter((product) => (
+        product.title.toLowerCase().includes(searchItem.toLowerCase())
+    ))
+
+    let filterProducts = searchItems.filter((product) => {
+
+        if(category === "all") {
+            return true;
         }
+
+        return product.category === category;
+    });
+
+    let addToCart = (product) => {
+          console.log("Clicked", product);
+          
+        setCartItems((prev) => [...prev, product]);
     }
 
     return (
         <div className="card-container">
 
-            {products.map((p) => (
+            <SearchBar 
+            searchItem={searchItem}
+            setSearchItem={setSearchItem}
+            cartItems={cartItems}
+            />
+
+            <CategorySelect 
+            category={category}
+            setCategory={setCategory}
+            />
+
+            {filterProducts.map((p) => (
                <ProductCard 
                key={p.id}
                image={p.image}
                title={p.title}
                description={p.description}
                price={p.price}
-               qty={qty}
-               increaseQty={increaseQty}
-               decreaseQty={decreaseQty}
+               addToCart={() => addToCart(p)}
                />
-            ))}    
-  </div>
-  
+            ))}  
+
+
+            </div>
 );
 
 }
