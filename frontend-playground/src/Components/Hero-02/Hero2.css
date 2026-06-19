@@ -29,7 +29,7 @@
 
 .navbar .logo {
     font-size: 30px;
-    color: #2563eb;;
+    color: #2563eb;
     margin-left: 30px;
 }
 
@@ -86,6 +86,8 @@
     background-color: #1d4ed8;
     transform: scale(1.05);
 }
+
+
 
 .hero-section {
     display: flex;
@@ -170,4 +172,5 @@
     object-fit: cover;
     border-radius: 10px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-}
+} 
+ 

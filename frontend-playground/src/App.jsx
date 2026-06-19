@@ -1,10 +1,10 @@
-import Hero2 from "./Components/Hero-02/Hero2";
+import Hero3 from "./Components/Hero-3/Hero3";
 
 
 function App() {
  return (
   <>
-  <Hero2/>
+  <Hero3/>
   </>
  );
 }
