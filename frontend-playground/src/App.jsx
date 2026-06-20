@@ -1,10 +1,11 @@
-import Hero3 from "./Components/Hero-3/Hero3";
+import Hero4 from "./Components/Hero-04/Hero4";
+
 
 
 function App() {
  return (
   <>
-  <Hero3/>
+  <Hero4/>
   </>
  );
 }
